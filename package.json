@@ -1,0 +1,38 @@
+{
+  "name": "pdf-rag-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MCP server that answers prompts from your static PDF files using hybrid RAG (BM25 + vector search).",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "pdf-rag-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "ingest": "tsx src/cli/ingest.ts",
+    "ask": "tsx src/cli/ask.ts",
+    "search": "tsx src/cli/ask.ts --search",
+    "llm:check": "tsx src/cli/check-llm.ts",
+    "serve:http": "node dist/index.js --transport http",
+    "smoke": "node scripts/mcp-smoke.mjs",
+    "sample": "node scripts/make-sample-pdf.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.0",
+    "unpdf": "^1.0.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "pdfkit": "^0.15.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
